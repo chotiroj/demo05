@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>进货列表</title>
+<link rel="stylesheet" type="text/css" href="/asserts/easyui/themes/default/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="/asserts/easyui/themes/icon.css"/>
+<link rel="stylesheet" type="text/css" href="/asserts/css/main.css">
+</head>
+<body>
+<style>
+	.textbox{
+		margin-right:10px;border:1px solid #95B8E7;height:26px;box-sizing:content-box;padding-left:5px;border-radius:4px;transition: background 0.3s ease-in-out;
+	}
+	.textbox:focus{
+		outline:none;box-shadow:0 0 3px 0 #95B8E7;
+	}
+	.input{width:153px;}
+	.textarea{margin-right:10px;box-sizing:content-box;padding-left:5px;border:1px solid #95B8E7;border-radius:4px;transition: background 0.3s ease-in-out;}
+	.textarea:focus{outline:none;box-shadow:0 0 3px 0 #95B8E7;}
+.span{margin-right:10px;}
+</style>
+<script type="text/javascript" src="/asserts/js/order_in.js"></script>
+<div id="odtoolbar_top" style="margin:3px;border:1px solid #95B8E7;">
+<div id="od_toolbar" style="height:80px;background:#f4f4f4;padding-left:8px;margin:0;">
+<div style="height:20px;margin:4px 0 0 0;line-height:20px;">
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-package-add'" onclick="od_obj.openAdd()">添加进货单</a>
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-eye'" onclick="od_obj.openView()">查看进货单</a>
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-package-in'" onclick="od_obj.stockIn()">采购入库</a>
+</div>
+<div style="height:56px;margin:0;line-height:56px;">
+<label>金额：</label>
+ <input type="text" id="search-minMoney" class="textbox input" data-options="min:0,precision:2">
+<!-- data-options="icons:[{iconCls:'icon-remove',handler:function(e){$(e.data.target).textbox('setValue','')}}]" -->
+<span class="span">至</span>
+<input type="text" id="search-maxMoney" class="textbox input" data-options="min:0,precision:2">
+<label>状态：</label>
+<input id="combood" class="input"/>
+<a href="javascript:void(0)" class="easyui-linkbutton" style="heigth:15px;border-radius:20px;width:80px;height:26px;border:1px solid #95B8E7;margin-left:-6px;" data-options="iconCls:'icon-search'" onclick="od_obj.search()">搜索</a>
+</div>
+</div>
+<table id="orderin_list">
+</table>
+	<div id="od_addDialog" hidden="true" class="easyui-dialog" data-options="iconCls:'icon-package-add',closed:true" style="width:640px;padding:5px;">
+		<table id="select-goods-datagrid" class="easyui-datagrid" style="width:616px;height:356px" data-options="toolbar:'#select-goods-btn'">
+			<thead>
+		<tr>
+			<th data-options="field:'id'" width="151px">商品ID</th>
+			<th data-options="field:'goodsName'" width="151px">商品名称</th>
+			<th data-options="field:'price'" width="151px">商品价格</th>
+			<th data-options="field:'shopnum'" width="151px" editor="{type:'numberbox',options:{min:1,precision:0}}">商品数量</th>
+		</tr>
+	</thead>
+		</table>
+		<div id="select-goods-btn">
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true," onclick="od_obj.selectProduct()">添加商品</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true," onclick="od_obj.removeProduct()">删除商品</a>
+		</div>
+	</div>
+	
+	<div id="show-goods-dialog" class="easyui-dialog" data-options="closed:true,iconCls:'icon-package-add'" style="width:740px; padding:5px;">
+		<table id="show-goods-datagrid" class="easyui-datagrid" style="width:716px;height:450px"></table>
+	</div>
+	
+	<!-- <div id="od-2-addDialog"></div> -->
+	<div id="gs_viewDialog" class="easyui-dialog" data-options="closed:true,iconCls:'icon-package-add'" style="width:550px; padding:5px;">
+		<table id="gs_view-detailDatagrid" class="easyui-datagrid" style="width:526px;height:356px">
+			<thead>
+		<tr>
+			<th  data-options="field:'id'" width="103px">ID</th>
+			<th  data-options="field:'goodsName'" width="103px">商品名称</th>
+			<th  data-options="field:'price'" width="103px">商品价格</th>
+			<th  data-options="field:'shopnum'" width="103px">商品数量</th>
+			<th  data-options="field:'amount'" width="103px">小计</th>
+		</tr>
+	</thead>
+		</table>
+	</div>
+</div>
+</body>
+</html>

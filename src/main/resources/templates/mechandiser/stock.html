@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>库存盘点</title>
+<link rel="stylesheet" type="text/css" href="/asserts/easyui/themes/default/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="/asserts/easyui/themes/icon.css"/>
+<link rel="stylesheet" type="text/css" href="/asserts/css/main.css">
+</head>
+<body>
+<style>
+	.textbox{
+		margin-right:10px;border:1px solid #95B8E7;height:26px;box-sizing:content-box;padding-left:5px;border-radius:4px;transition: background 0.3s ease-in-out;
+	}
+	.textbox:focus{
+		outline:none;box-shadow:0 0 3px 0 #95B8E7;
+	}
+	.input{width:153px;}
+</style>
+<script type="text/javascript" src="/asserts/js/stock.js"></script>
+<div id="sttoolbar_top" style="margin:3px;border:1px solid #95B8E7;">
+<div id="stock_toolbar" style="height:80px;background:#f4f4f4;padding-left:8px;margin:0;">
+<div style="height:20px;margin:4px 0 0 0;line-height:20px;">
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-brick-edit'" onclick="st_obj.openEdit()">调整库存</a>
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-brick-delete'" onclick="st_obj.deleteStock()">删除库存</a>
+</div>
+<div style="height:56px;margin:0;line-height:56px;">
+<!-- data-options="icons:[{iconCls:'icon-remove',handler:function(e){$(e.data.target).textbox('setValue','')}}]" -->
+<label>商品名称：</label><input type="text" name="goodsName" class="textbox input"/>
+<label>商品库存:&nbsp;&nbsp;</label><input type="text" name="stock_num" class="textbox input"/>
+<label>所属供应商：</label>
+<input id="combost" class="input"/>
+<a href="javascript:void(0)" class="easyui-linkbutton" style="heigth:15px;border-radius:20px;width:80px;height:26px;border:1px solid #95B8E7;margin-left:-6px;" data-options="iconCls:'icon-search'" onclick="st_obj.search()">搜索</a>
+</div>
+</div>
+<table id="stock_list">
+</table>
+	<div id="stock_editDialog" hidden="true">
+		<form id="st_edit-form" method="post">
+			<input type="hidden" name="goodsid" id="edit-id">
+			<p><label>商品名称：</label><input type="text" name="goodsName"class="textbox input"></p>
+			<p><label>原库存量：</label><input type="text" name="num" class="textbox input"></p>
+			<p><label>新库存量：</label><input type="text" name="new_num" class="input textbox easyui-validatebox" data-options="min:0,precision:0,required:true,missingMessage:'请输入新库存量'"></p>
+		</form>
+	</div>
+</div>
+</body>
+</html>

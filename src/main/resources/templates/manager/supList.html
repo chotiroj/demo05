@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>供应商列表</title>
+<link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css"/>
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+<body>
+<style>
+	.textbox{
+		margin-right:10px;border:1px solid #95B8E7;height:26px;box-sizing:content-box;padding-left:5px;border-radius:4px;transition: background 0.3s ease-in-out;
+	}
+	.textbox:focus{
+		outline:none;box-shadow:0 0 3px 0 #95B8E7;
+	}
+	.input{width:153px;}
+	.textarea{margin-right:10px;box-sizing:content-box;padding-left:5px;border:1px solid #95B8E7;border-radius:4px;transition: background 0.3s ease-in-out;}
+	.textarea:focus{outline:none;box-shadow:0 0 3px 0 #95B8E7;}
+</style>
+<script type="text/javascript" src="/asserts/js/supplier.js"></script>
+<div id="toolbar_top1" style="margin:3px;border:1px solid #95B8E7;">
+<!-- 搜索的div为toolbar（工具栏） -->
+<div id="sup_toolbar" style="height:80px;background:#f4f4f4;padding-left:8px;margin:0;">
+<div style="height:20px;margin:4px 0 0 0;line-height:20px;">
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-vcard-add'" onclick="sup_obj.openAdd()">添加</a>
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-vcard-edit'" onclick="sup_obj.openEdit()">修改</a>
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-vcard-delete'" onclick="sup_obj.deleteEmp()">删除</a></div>
+<div style="height:56px;margin:0;line-height:56px;">
+<label>供应商编号：</label><input type="text" name="sup_id" class="textbox input"/>
+<label>供应商联系人姓名：</label><input type="text" name="sup_name" class="textbox input"/>
+<a href="javascript:void(0)" class="easyui-linkbutton" style="heigth:15px;border-radius:20px;width:80px;height:26px;border:1px solid #95B8E7;margin-left:-6px;" data-options="iconCls:'icon-search'" onclick="sup_obj.search()">搜索</a>
+</div>
+</div>
+<table id="sup_list">
+</table>
+	<div id="sup_addDialog" hidden="true">
+		<form id="sup_add-form" method="post">
+			<p><label>联系人：</label><input type="text" class="textbox input easyui-validatebox" name="contactName" data-options="required:true,validType:'length[2,4]',missingMessage:'请输入供应商姓名',invalidMessage:'用户姓名为2-4个字符长度！'," ></p>
+			<p><label>手机号：</label><input type="text" class="textbox input easyui-validatebox" name="tel" data-options="required:true,validType:'length[0,13]',missingMessage:'请输入手机号',invalidMessage:'手机号长度为13个字符',"></p>
+			<p><label>性&nbsp;&nbsp;&nbsp;&nbsp;别：</label><input id="sup_combosex" name="gender" class="input"></p>
+			<p><label>地&nbsp;&nbsp;&nbsp;&nbsp;址：</label><textarea class="textarea input easyui-validatebox" rows="6" name="address" data-options="required:true,validType:'length[0,50]',missingMessage:'请输入联系地址',invalidMessage:'地址为0-50个字符长度！',"></textarea></p>
+			<!-- <p><a style="width:100px;" href="javascript:void(0)" onclick="obj.addEmp()">提交</a><a style="width:100px;margin:0 10px 0 20px" href="javascript:void(0)">取消</a></p> -->
+		</form>
+	</div>
+	
+		<div id="sup_editDialog" hidden="true">
+		<form id="sup_edit-form" method="post">
+			<input type="hidden" name="id" id="edit-id">
+			<p><label>联系人：</label><input type="text" class="textbox input easyui-validatebox" name="contactName" data-options="required:true,validType:'length[2,4]',missingMessage:'请输入供应商姓名',invalidMessage:'用户名为2-4个字符长度！'," ></p>
+			<p><label>手机号：</label><input type="text" class="textbox input easyui-validatebox" name="tel" data-options="required:true,validType:'length[0,13]',missingMessage:'请输入手机号',invalidMessage:'手机号长度为13个字符',"></p>
+			<p><label>性&nbsp;&nbsp;&nbsp;&nbsp;别：</label><input id="sup_combosex1" name="gender" class="input"></p>
+			<p><label>地&nbsp;&nbsp;&nbsp;&nbsp;址：</label><textarea class="textarea input easyui-validatebox" rows="6" name="address" data-options="required:true,validType:'length[0,50]',missingMessage:'请输入联系地址',invalidMessage:'地址为0-50个字符长度！',"></textarea></p>
+		</form>
+	</div>
+</div>
+</body>

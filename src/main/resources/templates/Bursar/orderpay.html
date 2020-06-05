@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>采购付款</title>
+<link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css"/>
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+<body>
+<style>
+.textbox{
+margin-right:10px;border:1px solid #95B8E7;height:26px;box-sizing:content-box;padding:0 3px;
+}
+.span{margin-right:10px;}
+.input{width:153px;}
+</style>
+<script type="text/javascript" src="../js/orderpay.js"></script>
+<div id="paytoolbar_top" style="margin:3px;border:1px solid #95B8E7;">
+<div id="pay_toolbar" style="height:80px;background:#f4f4f4;padding-left:8px;margin:0;">
+<div style="height:20px;margin:4px 0 0 0;line-height:20px;">
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-coins-add'" onclick="pay_obj.openPay()">货单支付</a>
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-eye'" onclick="pay_obj.openView()">查看货单</a>
+</div>
+<div style="height:56px;margin:0;line-height:56px;">
+<label>金额：</label>
+ <input id="search-minMoney" class="easyui-numberbox input" data-options="min:0,precision:2">
+<!-- data-options="icons:[{iconCls:'icon-remove',handler:function(e){$(e.data.target).textbox('setValue','')}}]" -->
+<span class="span">至</span>
+<input id="search-maxMoney" class="easyui-numberbox input" data-options="min:0,precision:2">
+<label>状态：</label>
+<input id="combopay" class="input"/>
+<a href="javascript:void(0)" class="easyui-linkbutton" style="heigth:15px;border-radius:20px;width:80px;height:26px;border:1px solid #95B8E7;margin-left:-6px;" data-options="iconCls:'icon-search'" onclick="pay_obj.search()">搜索</a>
+</div>
+</div>
+<table id="pay_list">
+</table>
+
+	<div id="pay-dialog" class="easyui-dialog" data-options="closed:true" style="width:340px;height:170px;">
+	<form id="pay-form" method="post">
+        <table id="paytable">
+            <tr>
+                <td width="70" align="right">支付方式:</td>
+                <td>
+                	<select name="payType" id="add-payType" class="input easyui-combobox" data-options="panelHeight:'auto'">
+		            	<option value="0" selected>现金</option>
+		            	<option value="1">银行转账</option>
+		            	<option value="2">支付宝</option>
+		            	<option value="3">微信</option>
+		            </select>
+                </td>
+            </tr>
+            <tr>
+                <td width="80" align="right">状态:</td>
+                <td>
+                	<select name="status" id="add-status" class="input easyui-combobox" data-options="panelHeight:'auto'">
+		            	<option value="0" selected>未支付</option>
+		            	<option value="1">已支付</option>
+		            </select>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+	
+	<!-- <div id="od-2-addDialog"></div> -->
+	<div id="pay_viewDialog" class="easyui-dialog" data-options="closed:true,iconCls:'icon-package-add'" style="width:550px; padding:5px;">
+		<table id="pay_view-detailDatagrid" class="easyui-datagrid" style="width:526px;height:356px">
+			<thead>
+		<tr>
+			<th  data-options="field:'goodsid'" width="103px">ID</th>
+			<th  data-options="field:'gsname'" width="103px">商品名称</th>
+			<th  data-options="field:'gsprice'" width="103px">商品价格</th>
+			<th  data-options="field:'shopnum'" width="103px">商品数量</th>
+			<th  data-options="field:'total'" width="103px">小计</th>
+		</tr>
+	</thead>
+		</table>
+	</div>
+	
+</div>
+</body>
+</html>

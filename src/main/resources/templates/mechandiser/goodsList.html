@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>商品列表</title>
+<link rel="stylesheet" type="text/css" href="/asserts/easyui/themes/default/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="/asserts/easyui/themes/icon.css"/>
+<link rel="stylesheet" type="text/css" href="/asserts/css/main.css">
+</head>
+<body>
+<style>
+.textbox{
+margin-right:10px;border:1px solid #95B8E7;height:26px;box-sizing:content-box;padding-left:5px;border-radius:4px;transition: background 0.3s ease-in-out;
+}
+.textbox:focus{
+	outline:none;box-shadow:0 0 3px 0 #95B8E7;
+}
+.input{width:153px;}
+.textarea{margin-right:10px;box-sizing:content-box;padding-left:5px;border:1px solid #95B8E7;border-radius:4px;transition: background 0.3s ease-in-out;}
+.textarea:focus{outline:none;box-shadow:0 0 3px 0 #95B8E7;}
+</style>
+<script type="text/javascript" src="/asserts/js/goods.js"></script>
+<div id="gtoolbar_top" style="margin:3px;border:1px solid #95B8E7;">
+<div id="goods_toolbar" style="height:80px;background:#f4f4f4;padding-left:8px;margin:0;">
+<div style="height:20px;margin:4px 0 0 0;line-height:20px;">
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-table-add'" onclick="gs_obj.openAdd()">添加</a>
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-table-edit'" onclick="gs_obj.openEdit()">修改</a>
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-table-delete'" onclick="gs_obj.deleteEmp()">删除</a>
+</div>
+<div style="height:56px;margin:0;line-height:56px;">
+<label>商品编号：</label><input type="text" name="id" class="textbox input"/>
+<!-- data-options="icons:[{iconCls:'icon-remove',handler:function(e){$(e.data.target).textbox('setValue','')}}]" -->
+<label>商品名称：</label><input type="text" name="goodsName" class="textbox input"/>
+<label>所属供应商：</label>
+<input id="combogs" class="input1"/>
+<a href="javascript:void(0)" class="easyui-linkbutton" style="heigth:15px;border-radius:20px;width:80px;height:26px;border:1px solid #95B8E7;margin-left:-6px;" data-options="iconCls:'icon-search'" onclick="gs_obj.search()">搜索</a>
+</div>
+</div>
+<table id="goods_list">
+</table>
+	<div id="gs_addDialog" hidden="true">
+		<form id="gs_add-form" method="post">
+			<p><label>&nbsp;&nbsp;&nbsp;&nbsp;商品名称：</label><input type="text" name="goodsName" class="textbox input easyui-validatebox" data-options="required:true,validType:'length[1,50]',missingMessage:'请输入商品名称',invalidMessage:'名称不超过50个字符长度！'"></p>
+			<p><label>所属供应商：</label><input id="combogs1" class="input" name="supplier"></p>
+			<p><label>&nbsp;&nbsp;&nbsp;&nbsp;商品产地：</label><textarea name="produceArea" rows="6" class="textarea input easyui-validatebox" data-options="required:true,validType:'length[1,50]',missingMessage:'请输入商品产地',invalidMessage:'不超过50个字符长度！'"></textarea></p>
+			<p><label>&nbsp;&nbsp;&nbsp;&nbsp;商品规格：</label><input type="text" name="size" class="textbox input easyui-validatebox" data-options="required:true,validType:'length[1,10]',missingMessage:'请输入商品规格',invalidMessage:'不超过10个字符长度！'"></p>
+			<p><label>&nbsp;&nbsp;&nbsp;&nbsp;商品价格：</label><input type="text" class="textbox input easyui-validatebox" name="price" data-options="required:true,min:0,precision:0,missingMessage:'请输入商品价格'"></p>
+			<!-- <p><a style="width:100px;" href="javascript:void(0)" onclick="obj.addEmp()">提交</a><a style="width:100px;margin:0 10px 0 20px" href="javascript:void(0)">取消</a></p> -->
+		</form>
+	</div>
+
+		<div id="gs_editDialog" hidden="true">
+		<form id="gs_edit-form" method="put">
+			<input type="hidden" name="id" id="edit-id">
+			<p><label>&nbsp;&nbsp;&nbsp;&nbsp;商品名称：</label><input type="text" class="textbox input easyui-validatebox" name="goodsName" data-options="required:true,validType:'length[1,50]',missingMessage:'请输入商品名称',invalidMessage:'名称不超过50个字符长度！'"></p>
+			<p><label>所属供应商：</label><input id="combogs2" class="input" name="supplier"></p>
+			<p><label>&nbsp;&nbsp;&nbsp;&nbsp;商品产地：</label><textarea name="produceArea" rows="6"  class="textarea input easyui-validatebox" data-options="required:true,validType:'length[1,50]',missingMessage:'请输入商品产地',invalidMessage:'不超过50个字符长度！'"></textarea></p>
+			<p><label>&nbsp;&nbsp;&nbsp;&nbsp;商品规格：</label><input type="text" name="size" class="textbox input easyui-validatebox" data-options="required:true,validType:'length[1,10]',missingMessage:'请输入商品规格',invalidMessage:'不超过10个字符长度！'"></p>
+			<p><label>&nbsp;&nbsp;&nbsp;&nbsp;商品价格：</label><input type="text" class="textbox input easyui-validatebox" name="price" data-options="required:true,min:0,precision:0,missingMessage:'请输入商品价格'"></p>
+		</form>
+	</div>
+</div>
+</body>
+</html>

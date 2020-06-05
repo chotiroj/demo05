@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>登录</title>
+<link rel="stylesheet" type="text/css" th:href="@{/asserts/css/main.css}">
+<script type="text/javascript" th:src="@{/asserts/easyui/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/asserts/js/ulogin.js}"></script>
+</head>
+<body style="margin:0;background:url('../asserts/images/bg.jpg') top repeat-y;">
+<div class="login-bg">
+	<div class="login-top">
+		登录进销存管理系统
+	</div>
+	<div class="login-content">
+	<div class="login-content-img"><img alt="" th:src="@{/asserts/images/username.png}"></div>
+		<div class="login-content-input">
+		<input type="text" name="username" value="" placeholder="请输入您的用户名" onfocus="this.placeholder=&#39;&#39;" onblur="this.placeholder=&#39;请输入您的用户名&#39;">
+		<div class="login-content-input-text">用户名</div>
+		</div>
+	</div>
+	<div class="login-content">
+	<div class="login-content-img"><img alt="" th:src="@{/asserts/images/password.png}"></div>
+		<div class="login-content-input">
+		<input type="password" name="password" value="" placeholder="请输入您的密码" onfocus="this.placeholder=&#39;&#39;" onblur="this.placeholder=&#39;请输入您的密码&#39;">
+		<div class="login-content-input-text">密码</div>
+		</div>
+	</div>
+	<div class="login-button">登录</div>
+</div>
+<div class="sk-rotating-plane"></div>
+</body>
+</html>

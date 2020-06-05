@@ -1,0 +1,61 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>查询员工信息</title>
+<link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css"/>
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+<body>
+<style>
+	.textbox{
+		margin-right:10px;border:1px solid #95B8E7;height:26px;box-sizing:content-box;padding-left:5px;border-radius:4px;transition: background 0.3s ease-in-out;
+	}
+	.textbox:focus{
+		outline:none;box-shadow:0 0 3px 0 #95B8E7;
+	}
+	.input{width:153px;}
+</style>
+<script type="text/javascript" src="/asserts/js/main.js"></script>
+<div id="toolbar_top" style="margin:3px;border:1px solid #95B8E7;">
+<div id="search_toolbar" style="height:80px;background:#f4f4f4;padding-left:8px;margin:0;">
+<div style="height:20px;margin:4px 0 0 0;line-height:20px;">
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-group-add'" onclick="obj.openAdd()">添加</a>
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-group-edit'" onclick="obj.openEdit()">修改</a>
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-group-delete'" onclick="obj.deleteEmp()">删除</a></div>
+<div style="height:56px;margin:0;line-height:56px;">
+<label>员工编号：</label><input type="text" name="id" class="textbox input"/>
+<label>员工姓名：</label><input type="text" name="name" class="textbox input"/>
+<label>职务名称：</label>
+<input id="combobox" class="input"/>
+<a href="javascript:void(0)" class="easyui-linkbutton" style="heigth:15px;border-radius:20px;width:80px;height:26px;border:1px solid #95B8E7;margin-left:-6px;" data-options="valueField:'id',textField:'departmentName',iconCls:'icon-search'" onclick="obj.search()">搜索</a>
+</div>
+</div>
+<table id="em_list">
+</table>
+	<div id="addDialog" hidden="true">
+		<form id="add-form" method="post">
+			<p><label>用户名：</label><input type="text" class="textbox input easyui-validatebox" name="userName" data-options="required:true,validType:'length[4,10]',missingMessage:'请输入用户名',invalidMessage:'用户名为4-10个字符长度！'," ></p>
+			<p><label>密&nbsp;&nbsp;&nbsp;&nbsp;码：</label><input type="text" class="textbox input easyui-validatebox" name="password" data-options="required:true,validType:'length[4,10]',missingMessage:'请输入用户密码',invalidMessage:'用户密码为6-10个字符长度！',"></p>
+			<p><label>手机号：</label><input type="text" class="textbox input easyui-validatebox" name="tel" data-options="required:true,validType:'length[0,13]',missingMessage:'请输入手机号',invalidMessage:'手机号长度为13个字符',"></p>
+			<p><label>性&nbsp;&nbsp;&nbsp;&nbsp;别：</label><input type="text" id="combosex" name="gender" class="input" ></p>
+			<p><label>姓&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" class="textbox input easyui-validatebox" name="lastName" data-options="required:true,validType:'length[2,4]',missingMessage:'请输入用户姓名',invalidMessage:'用户姓名为2-4个字符长度！',"></label></p>
+			<p><label>职&nbsp;&nbsp;&nbsp;&nbsp;务：</label><input id="combobox1" name="department" class="input" ></p>
+			<!-- <p><a style="width:100px;" href="javascript:void(0)" onclick="obj.addEmp()">提交</a><a style="width:100px;margin:0 10px 0 20px" href="javascript:void(0)">取消</a></p> -->
+		</form>
+	</div>
+		<div id="editDialog" hidden="true">
+		<form id="edit-form" method="post">
+			<input type="hidden" name="id" id="edit-id">
+			<p><label>用户名：</label><input id="userName" type="text" class="textbox input easyui-validatebox" name="userName" data-options="required:true,validType:'length[4,10]',missingMessage:'请输入用户名',invalidMessage:'用户名为4-10个字符长度！',"></p>
+			<p><label>密&nbsp;&nbsp;&nbsp;&nbsp;码：</label><input type="text" id="password" class="textbox input easyui-validatebox" name="password" data-options="required:true,validType:'length[6,10]',missingMessage:'请输入用户密码',invalidMessage:'用户密码为6-10个字符长度！',"></p>
+			<p><label>手机号：<input type="text" id="tel" class="textbox input easyui-validatebox" name="tel" data-options="required:true,validType:'length[0,13]',missingMessage:'请输入手机号',invalidMessage:'手机号长度为13个字符！',"></label></p>
+			<p><label>性&nbsp;&nbsp;&nbsp;&nbsp;别：</label><input id="combosex1" name="gender" class="input"></p>
+			<p><label>姓&nbsp;&nbsp;&nbsp;&nbsp;名：</label><input type="text" id="name" class="textbox input easyui-validatebox" name="lastName" data-options="required:true,validType:'length[2,4]',missingMessage:'请输入用户姓名',invalidMessage:'用户姓名为2-4个字符长度！'"></p>
+			<p><label>职&nbsp;&nbsp;&nbsp;&nbsp;务：</label><input id="combobox2" name="department" class="input"></p>
+		</form>
+	</div>
+</div>
+</body>
+</html>

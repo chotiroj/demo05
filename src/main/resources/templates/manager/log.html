@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>日志列表</title>
+<link rel="stylesheet" type="text/css" href="../esserts/easyui/themes/default/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="../esserts/easyui/themes/icon.css"/>
+</head>
+<body>
+<style>
+.textbox{
+margin-right:10px;border:1px solid #95B8E7;height:26px;box-sizing:content-box;padding:0 3px;
+}
+.input{width:153px;}
+.textarea{box-sizing:content-box;padding:0 3px;border:1px solid #95B8E7;width:260px;float:left;}
+</style>
+<script type="text/javascript" src="../esserts/js/log.js"></script>
+<div id="logtoolbar_top" style="margin:3px;border:1px solid #95B8E7;">
+<div id="log_toolbar" style="height:80px;background:#f4f4f4;padding-left:8px;margin:0;">
+<div style="height:20px;margin:4px 0 0 0;line-height:20px;">
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add1'" onclick="log_obj.openAdd()">添加日志</a>
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cancel1'" onclick="log_obj.deleteLog()">删除日志</a>
+</div>
+<div style="height:56px;margin:0;line-height:56px;">
+<label>日志内容：</label><input type="text" name="search_content" class="easyui-textbox input"/>
+<a href="javascript:void(0)" class="easyui-linkbutton" style="heigth:15px;border-radius:20px;width:80px;height:26px;border:1px solid #95B8E7;margin-left:-6px;" data-options="iconCls:'icon-search'" onclick="log_obj.search()">搜索</a>
+</div>
+</div>
+<table id="log_list">
+</table>
+	<div id="log_addDialog" hidden="true">
+		<form id="log_add-form" method="post">
+			<p><label><span style="float:left;margin-left:20px;">日志内容 ：</span></label><textarea name="content" rows="6" class="textarea"></textarea></p>
+		</form>
+	</div>
+	
+		<div id="log_editDialog" hidden="true">
+		<form id="log_edit-form" method="post">
+			<input type="hidden" name="id" id="edit-id">
+			<p><label>日志内容 ：</label><textarea name="content" rows="6" style="width:260px"></textarea></p>
+		</form>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>销售统计</title>
+<link rel="stylesheet" type="text/css" href="../asserts/easyui/themes/default/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="../asserts/easyui/themes/icon.css"/>
+</head>
+<body>
+<script type="text/javascript" src="../asserts/js/stats.js"></script>
+<script type="text/javascript" src="../asserts/js/echarts.min.js"></script>
+<div id="statoolbar_top" style="margin:3px;border:1px solid #95B8E7;">
+<div id="sta_toolbar" style="height:40px;padding:0 8px;margin:0;">
+<div style="height:20px;padding-top:4px;line-height:20px;">
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-chart-curve-add'" onclick="stats_obj.statsDay()">按日统计</a>
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-chart-curve-link'" onclick="stats_obj.statsMonth()">按月统计</a>
+<a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-chart-curve-go'" onclick="stats_obj.statsYear()">按年统计</a>
+</div>
+</div>
+	<div class="easyui-accordion" style="margin-left:5px;width:100%;height:900px;">
+		<div title="销售统计图" data-options="iconCls:'icon-chart-curve'" style="padding:10px;overflow:auto;">
+		<!--为echarts准备一个有（宽高）的dom  -->
+		<div id="stats_main" style="width:100%;height:500px;"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
